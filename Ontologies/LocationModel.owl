@@ -1,0 +1,2715 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:LocationModel="http://www.surrey.ac.uk/ccsr/ontologies/LocationModel.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+  xml:base="http://www.surrey.ac.uk/ccsr/ontologies/LocationModel.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="SpatialThing"/>
+  <owl:Class rdf:ID="Compass_Area">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <LocationModel:Compass_Area rdf:ID="East"/>
+          <LocationModel:Compass_Area rdf:ID="NorthEast"/>
+          <LocationModel:Compass_Area rdf:ID="North"/>
+          <LocationModel:Compass_Area rdf:ID="NorthWest"/>
+          <LocationModel:Compass_Area rdf:ID="South"/>
+          <LocationModel:Compass_Area rdf:ID="SouthEast"/>
+          <LocationModel:Compass_Area rdf:ID="SouthWest"/>
+          <LocationModel:Compass_Area rdf:ID="West"/>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lab">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Room"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Premises">
+    <rdfs:subClassOf rdf:resource="#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MeetingRoom">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Room"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Floor">
+    <rdfs:subClassOf rdf:resource="#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Room">
+    <rdfs:subClassOf rdf:resource="#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Building">
+    <rdfs:subClassOf rdf:resource="#SpatialThing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="isContainedIn">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="contains"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Floor"/>
+    <rdfs:domain rdf:resource="#Room"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#contains">
+    <owl:inverseOf rdf:resource="#isContainedIn"/>
+    <rdfs:domain rdf:resource="#Floor"/>
+    <rdfs:range rdf:resource="#Room"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasFacingArea">
+    <rdfs:range rdf:resource="#Compass_Area"/>
+    <rdfs:domain rdf:resource="#Room"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:ID="isLocatedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Building"/>
+    <rdfs:range rdf:resource="#Premises"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="isInBuilding">
+    <rdfs:domain rdf:resource="#Floor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:ID="hasFloor"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Building"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#hasFloor">
+    <owl:inverseOf rdf:resource="#isInBuilding"/>
+    <rdfs:domain rdf:resource="#Building"/>
+    <rdfs:range rdf:resource="#Floor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <LocationModel:Building rdf:ID="BB_Building">
+    <LocationModel:isLocatedIn>
+      <LocationModel:Premises rdf:ID="UniversityofSurreyCampus">
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >http://dbpedia.org/page/University_of_Surrey</rdfs:seeAlso>
+      </LocationModel:Premises>
+    </LocationModel:isLocatedIn>
+  </LocationModel:Building>
+  <LocationModel:Floor rdf:ID="BB_FourthFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_07_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_01_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_03_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_02_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_06_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_05_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_09_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_08_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_10_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_04_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:MeetingRoom rdf:ID="BB_19_04">
+        <LocationModel:isContainedIn rdf:resource="#BB_FourthFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#SouthEast"/>
+      </LocationModel:MeetingRoom>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+  <LocationModel:Floor rdf:ID="BA_GroundFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G39">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G16">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G23">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G38">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G19">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:isInBuilding>
+      <LocationModel:Building rdf:ID="BA_Building">
+        <LocationModel:hasFloor>
+          <LocationModel:Floor rdf:ID="BA_SecondFloor">
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E11">
+                <LocationModel:hasFacingArea rdf:resource="#NorthWest"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:MeetingRoom rdf:ID="E24">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+                <LocationModel:hasFacingArea rdf:resource="#West"/>
+              </LocationModel:MeetingRoom>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:MeetingRoom rdf:ID="E6">
+                <LocationModel:hasFacingArea rdf:resource="#West"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:MeetingRoom>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E22">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E4">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E17">
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E7">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E15">
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:MeetingRoom rdf:ID="E1">
+                <LocationModel:hasFacingArea rdf:resource="#East"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:MeetingRoom>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E18">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E12">
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E10">
+                <LocationModel:hasFacingArea rdf:resource="#East"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E8">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:isInBuilding rdf:resource="#BA_Building"/>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E20">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E23">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E19">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E9">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E5">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E13">
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E21">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E16">
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="E14">
+                <LocationModel:hasFacingArea rdf:resource="#South"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_SecondFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+          </LocationModel:Floor>
+        </LocationModel:hasFloor>
+        <LocationModel:hasFloor>
+          <LocationModel:Floor rdf:ID="BA_FirstFloor">
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U35">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U46">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U50">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Lab rdf:ID="U53">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Lab>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U40">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Lab rdf:ID="U54">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Lab>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U41">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U36">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:isInBuilding rdf:resource="#BA_Building"/>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U42">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U7">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U37">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U48">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U43">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U38">
+                <LocationModel:hasFacingArea rdf:resource="#NorthEast"/>
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U8">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U49">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U3">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U32">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U39">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U5">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U4">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U33">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U44">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U34">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U6">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="U45">
+                <LocationModel:isContainedIn rdf:resource="#BA_FirstFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+          </LocationModel:Floor>
+        </LocationModel:hasFloor>
+        <LocationModel:hasFloor rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:isLocatedIn rdf:resource="#UniversityofSurreyCampus"/>
+      </LocationModel:Building>
+    </LocationModel:isInBuilding>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G11">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G18">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G13">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G40">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G12">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G24">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G15">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G20">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G10">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G14">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G41">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G22">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G26">
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G21">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="G17">
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+        <LocationModel:isContainedIn rdf:resource="#BA_GroundFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+  <LocationModel:Floor rdf:ID="AB_ThirdFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_55_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_24_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_86_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_26_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_36_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_16_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_89_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_53_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_37_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_40_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_34_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_10_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_95_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_21_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_44_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_35_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_11_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_22_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_47_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_92_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_60_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_48_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_84_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_76_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_58_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_18_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_74_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_56_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_80_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_71_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_81_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_19_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_100_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_57_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_33_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_32_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_88_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_43_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_66_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_82_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_03_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_04_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_98_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:isInBuilding>
+      <LocationModel:Building rdf:ID="AB_Building">
+        <LocationModel:isLocatedIn rdf:resource="#UniversityofSurreyCampus"/>
+        <LocationModel:hasFloor>
+          <LocationModel:Floor rdf:ID="AB_FifthFloor">
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_17_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_14_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_03_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_06_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_07_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_12_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_10_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_13_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_05_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_11_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_20_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_01_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_15_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_02_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_18_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_04_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_19_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_08_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_09_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:isInBuilding rdf:resource="#AB_Building"/>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_16_05">
+                <LocationModel:isContainedIn rdf:resource="#AB_FifthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+          </LocationModel:Floor>
+        </LocationModel:hasFloor>
+        <LocationModel:hasFloor>
+          <LocationModel:Floor rdf:ID="AB_FourthFloor">
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_16_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_15_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_12_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_14_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_08_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_11_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_06_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_20_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_02_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_13_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_19_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_07_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_03_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_04_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_05_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:isInBuilding rdf:resource="#AB_Building"/>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_10_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_01_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_17_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_09_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_18_04">
+                <LocationModel:isContainedIn rdf:resource="#AB_FourthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+          </LocationModel:Floor>
+        </LocationModel:hasFloor>
+        <LocationModel:hasFloor>
+          <LocationModel:Floor rdf:ID="AB_SixthFloor">
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_28_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_55_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_72_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_53_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_18_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_05_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_42_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_35_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_30_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_70_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_09_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_60_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_93_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_16_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_52_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_39_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_50_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_03_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_36_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_51_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_04_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_95_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_47_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_59_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_13_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_07_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:isInBuilding rdf:resource="#AB_Building"/>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_91_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_79_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_73_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_58_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_46_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_69_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_78_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_57_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_68_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_88_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_45_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_33_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_97_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_44_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_10_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_74_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_62_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_08_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_11_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_80_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_86_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_66_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_81_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_15_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_84_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_29_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_37_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_48_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_98_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_99_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_41_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_49_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_22_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_17_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_12_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_40_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_65_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_89_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_14_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_38_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_100_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_64_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_25_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_20_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_82_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_26_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_90_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_76_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_34_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_01_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_96_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_87_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_92_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_02_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_32_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_06_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_21_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_61_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_63_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_71_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_94_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_23_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_31_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_85_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_77_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_19_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_24_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_56_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_54_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_27_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_67_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_83_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_75_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+            <LocationModel:contains>
+              <LocationModel:Room rdf:ID="AB_43_06">
+                <LocationModel:isContainedIn rdf:resource="#AB_SixthFloor"/>
+              </LocationModel:Room>
+            </LocationModel:contains>
+          </LocationModel:Floor>
+        </LocationModel:hasFloor>
+        <LocationModel:hasFloor rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Building>
+    </LocationModel:isInBuilding>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_12_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_42_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_93_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_46_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_54_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_77_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_70_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_72_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_51_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_87_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_69_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_65_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_75_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_62_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_01_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_08_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_07_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_61_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_68_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_67_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_99_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_30_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_91_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_02_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_90_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_05_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_94_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_23_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_20_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_29_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_13_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_83_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_79_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_78_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_38_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_59_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_39_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_52_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_27_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_17_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_63_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_28_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_09_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_41_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_64_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_45_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_14_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_96_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_06_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_31_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_50_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_73_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_49_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_15_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_97_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_85_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AB_25_03">
+        <LocationModel:isContainedIn rdf:resource="#AB_ThirdFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+  <LocationModel:Floor rdf:ID="BB_SecondFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_01_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_16_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_11_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_19_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_05_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_20_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_07_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_18_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_15_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_02_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_10_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_06_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_14_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_03_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_09_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_13_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_04_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:MeetingRoom rdf:ID="BB_39_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#SouthEast"/>
+      </LocationModel:MeetingRoom>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_17_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_08_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BB_12_02">
+        <LocationModel:isContainedIn rdf:resource="#BB_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+  <LocationModel:Building rdf:ID="AC_Building">
+    <LocationModel:isLocatedIn rdf:resource="#UniversityofSurreyCampus"/>
+    <LocationModel:hasFloor>
+      <LocationModel:Floor rdf:ID="AC_FifthFloor">
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_01_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:isInBuilding rdf:resource="#AC_Building"/>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_10_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_20_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_16_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_02_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_11_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_04_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_12_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_09_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_14_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_03_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_06_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_17_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_05_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_19_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_18_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_13_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_08_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_15_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_07_05">
+            <LocationModel:isContainedIn rdf:resource="#AC_FifthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+      </LocationModel:Floor>
+    </LocationModel:hasFloor>
+    <LocationModel:hasFloor>
+      <LocationModel:Floor rdf:ID="AC_FourthFloor">
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_09_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_03_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_17_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_15_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_18_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_14_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_11_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_01_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_05_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:isInBuilding rdf:resource="#AC_Building"/>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_20_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_02_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_10_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_06_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_07_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_08_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_13_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_12_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_19_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_16_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+        <LocationModel:contains>
+          <LocationModel:Room rdf:ID="AC_04_04">
+            <LocationModel:isContainedIn rdf:resource="#AC_FourthFloor"/>
+          </LocationModel:Room>
+        </LocationModel:contains>
+      </LocationModel:Floor>
+    </LocationModel:hasFloor>
+  </LocationModel:Building>
+  <LocationModel:Floor rdf:ID="BC_SecondFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_04_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_02_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_05_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:isInBuilding>
+      <LocationModel:Building rdf:ID="BC_Building">
+        <LocationModel:isLocatedIn rdf:resource="#UniversityofSurreyCampus"/>
+        <LocationModel:hasFloor rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Building>
+    </LocationModel:isInBuilding>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_06_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_11_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_08_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_16_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_12_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_10_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_20_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_07_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_13_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_15_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_21_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_01_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_18_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_03_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_09_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_14_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_17_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="BC_19_02">
+        <LocationModel:isContainedIn rdf:resource="#BC_SecondFloor"/>
+        <LocationModel:hasFacingArea rdf:resource="#East"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+  <LocationModel:Floor rdf:ID="AA_SixthFloor">
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_83_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_52_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_58_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_97_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_18_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_50_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_41_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_47_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_57_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_86_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_44_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_07_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_02_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_62_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_38_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_20_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_27_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_54_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_64_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_84_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_01_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_51_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_88_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_39_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_40_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_79_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_29_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_45_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_55_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_13_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_74_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_28_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_81_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_90_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_30_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_80_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_12_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_53_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_72_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_71_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_15_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_89_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_61_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_60_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_49_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_36_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_76_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_100_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_98_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_82_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_67_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_56_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:isInBuilding>
+      <LocationModel:Building rdf:ID="AA_Building">
+        <LocationModel:hasFloor rdf:resource="#AA_SixthFloor"/>
+        <LocationModel:isLocatedIn rdf:resource="#UniversityofSurreyCampus"/>
+      </LocationModel:Building>
+    </LocationModel:isInBuilding>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_92_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_03_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_73_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_17_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_87_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_65_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_10_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_33_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_46_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_16_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_06_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_77_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_37_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_35_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_68_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_26_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_42_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_05_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_94_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_99_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_93_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_22_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_31_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_66_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_25_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_11_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_24_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_69_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_14_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_34_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_21_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_63_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_78_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_91_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_09_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_08_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_95_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_96_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_85_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_43_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_23_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_59_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_04_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_32_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_19_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_75_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_48_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+    <LocationModel:contains>
+      <LocationModel:Room rdf:ID="AA_70_06">
+        <LocationModel:isContainedIn rdf:resource="#AA_SixthFloor"/>
+      </LocationModel:Room>
+    </LocationModel:contains>
+  </LocationModel:Floor>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.8, Build 629)  http://protege.stanford.edu -->

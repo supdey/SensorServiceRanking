@@ -1,0 +1,742 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY httpschema "http://www.w3.org/2011/http#" >
+    <!ENTITY sawsdl "http://www.w3.org/ns/sawsdl#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY httpmethod "http://www.w3.org/2011/http-methods#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY httpstatus "http://www.w3.org/2011/http-statusCodes#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY iotest-qosqoi "http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-QoSQoI.owl#" >
+    <!ENTITY iotest-resource "http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Resource.owl#" >
+    <!ENTITY HTTP "http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP:" >
+]>
+
+
+<rdf:RDF xmlns="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#"
+     xml:base="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl"
+     xmlns:httpschema="http://www.w3.org/2011/http#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:HTTP="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP:"
+     xmlns:iotest-resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Resource.owl#"
+     xmlns:sawsdl="http://www.w3.org/ns/sawsdl#"
+     xmlns:httpmethod="http://www.w3.org/2011/http-methods#"
+     xmlns:iotest-qosqoi="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-QoSQoI.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:httpstatus="http://www.w3.org/2011/http-statusCodes#">
+    <owl:Ontology rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl">
+        <owl:imports rdf:resource="http://www.geonames.org/ontology"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#consistsOf -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#consistsOf">
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#AtomicService"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#CompositeService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#describedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#describedBy">
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Model"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#exposedBy -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#exposedBy">
+        <rdfs:comment>This property is defined to represent the fact that an IoT service is usually exposed by an IoT resource.</rdfs:comment>
+        <rdfs:range rdf:resource="&iotest-resource;Sensor"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#IoTService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasInput -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasInput">
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Input"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasParameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasOperation -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasOperation">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Model"/>
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasOutput">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Output"/>
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasParameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasParameter -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasParameter">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasPrecondition -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasPrecondition">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#PreCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasResult -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasResult">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation"/>
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Result"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#presents -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#presents">
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#semanticConceptRef -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#semanticConceptRef">
+        <rdfs:seeAlso>http://purl.oclc.org/NET/ssnx/qu/qu-rec20</rdfs:seeAlso>
+        <rdfs:comment>This property is defined specially for Input and Output in IoT services as the they often refer to the properties of feature of interests (property) in the physical world, for example, Temerature and speed.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter"/>
+        <rdfs:range rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serves -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serves">
+        <rdfs:comment>Range of this property usually is a concept presented in the QU ontology (such as speed and temperature).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceCategory -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceCategory">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameter -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameter">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceQoI -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceQoI">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceQoS -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceQoS">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#supports -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#supports">
+        <rdfs:range rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Grounding"/>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#unitOfMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#unitOfMeasurement">
+        <rdfs:comment>This property is defined specially for Input and Output in IoT services as the they often have unit of measurement for the properties of feature of interests (property) in the physical world, for example, Kelvin for Temerature, KM/Hour.</rdfs:comment>
+        <rdfs:seeAlso>http://purl.oclc.org/NET/ssnx/qu/qu-rec20</rdfs:seeAlso>
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter"/>
+        <rdfs:range rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#URI -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#URI">
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#endpointPort -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#endpointPort">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#endpointURI -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#endpointURI">
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#URI"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#executableURI -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#executableURI">
+        <rdfs:subPropertyOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#URI"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#executableVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#executableVersion">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#globalLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#globalLocation">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasGeohashCode -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasGeohashCode">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#localLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#localLocation">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceAddress -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceAddress">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Grounding"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceArea -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceArea">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceDocument -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceDocument">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Grounding"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceID -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceID">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&rdf;XMLLiteral"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceName -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceName">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameterName -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameterName"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameterValue -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceParameterValue">
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceTaxonomy -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceTaxonomy">
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceVersion -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceVersion">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#textDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#textDescription">
+        <rdfs:domain rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Resource.owl#Sensor -->
+
+    <owl:Class rdf:about="&iotest-resource;Sensor"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#AtomicService -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#AtomicService">
+        <rdfs:subClassOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#CompositeService -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#CompositeService">
+        <rdfs:subClassOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Grounding -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Grounding"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Input -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Input">
+        <rdfs:subClassOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#IoTService -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#IoTService">
+        <rdfs:subClassOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#AtomicService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Model -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Model"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Operation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasInput"/>
+                <owl:someValuesFrom rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Input"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasOutput"/>
+                <owl:someValuesFrom rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Output"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasPrecondition"/>
+                <owl:someValuesFrom rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#PreCondition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#hasResult"/>
+                <owl:someValuesFrom rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Result"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Output -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Output">
+        <rdfs:subClassOf rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Parameter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#semanticConceptRef"/>
+                <owl:someValuesFrom rdf:resource="&owl;Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#unitOfMeasurement"/>
+                <owl:someValuesFrom rdf:resource="&owl;Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#PreCondition -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#PreCondition"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Profile">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#serviceName"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#textDescription"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>See: http://www.ai.sri.com/daml/services/owl-s/1.2/ProfileHierarchy.owl and http://www.ai.sri.com/daml/services/owl-s/1.2/BravoAirProfile.owl for details on how the profile is linked to external taxonomy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Result -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Result">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>The result corresponds to the Effect class defined in previous version of the OWL-S.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service -->
+
+    <owl:Class rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Service"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#BPMN -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#BPMN"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#DOCUMENT-HTTP -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#DOCUMENT-HTTP"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Drool -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#Drool"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP-GET -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP-GET">
+        <owl:sameAs rdf:resource="&httpmethod;GET"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP-POST -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP-POST">
+        <owl:sameAs rdf:resource="&httpmethod;POST"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP:DELETE -->
+
+    <owl:NamedIndividual rdf:about="&HTTP;DELETE">
+        <owl:sameAs rdf:resource="&httpmethod;DELETE"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#HTTP:PUT -->
+
+    <owl:NamedIndividual rdf:about="&HTTP;PUT">
+        <owl:sameAs rdf:resource="&httpmethod;PUT"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#IDL -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#IDL"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#JAVA -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#JAVA"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#JavaFormat -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#JavaFormat"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#REST -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#REST"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#RESTful -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#RESTful"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#RPC-HTTP -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#RPC-HTTP"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAP-Document -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAP-Document"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAP-RPC -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAP-RPC"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAPWSDL -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAPWSDL"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#WADL -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#WADL"/>
+    
+
+
+    <!-- http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#WSDL -->
+
+    <owl:NamedIndividual rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#WSDL"/>
+    
+
+
+    <!-- http://www.w3.org/2011/http-methods#DELETE -->
+
+    <owl:NamedIndividual rdf:about="&httpmethod;DELETE"/>
+    
+
+
+    <!-- http://www.w3.org/2011/http-methods#GET -->
+
+    <owl:NamedIndividual rdf:about="&httpmethod;GET"/>
+    
+
+
+    <!-- http://www.w3.org/2011/http-methods#POST -->
+
+    <owl:NamedIndividual rdf:about="&httpmethod;POST"/>
+    
+
+
+    <!-- http://www.w3.org/2011/http-methods#PUT -->
+
+    <owl:NamedIndividual rdf:about="&httpmethod;PUT"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#RESTful"/>
+            <rdf:Description rdf:about="http://ict-iotest.eu/iotest/ontologies/v1.2/IoT.est-Service.owl#SOAPWSDL"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
