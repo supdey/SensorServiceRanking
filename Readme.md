@@ -15,4 +15,8 @@ The dataset consists of 100 gateways distributed over 22 different locations aro
 The ontology files needed to view the dataset files.
 ## [Sample Simulation and Evaluation code](./Code/uk)
 Code to simulate the discovery and ranking mechanism and execute the evaluation experiments on the datasets.
+## License
 
+Permission to use the datasets and experiment code are licensed under a  [Creative Commons Attribution 4.0 International License.](https://creativecommons.org/licenses/by/4.0/), to be accompanied with the following article citation:
+
+Wang W, Yao F, De S, Moessner K, Sun Z (2015) A Ranking Method for Sensor Services based on Estimation of Service Access Cost, Information Sciences 319 pp. 1-17 Elsevier
